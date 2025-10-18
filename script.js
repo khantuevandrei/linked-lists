@@ -95,7 +95,13 @@ function createLinkedList() {
     tail = currentNode;
   };
   //return true if if the passed value is in the list
-  const contains = (value) => {};
+  const contains = (value) => {
+    let currentNode = head;
+    while (currentNode.value !== value && currentNode.next !== null) {
+      currentNode = currentNode.next;
+    }
+    return currentNode.value === value ? true : false;
+  };
   //return the index of the node containing value
   const find = (value) => {};
   //show linked list objects as strings
@@ -111,6 +117,7 @@ function createLinkedList() {
     insertAt,
     removeAt,
     pop,
+    contains,
   };
 }
 
@@ -120,3 +127,9 @@ function createNode() {
 
   return { value, next };
 }
+
+let newList = createLinkedList();
+newList.prepend("parrot");
+newList.append("cat");
+newList.append("dog");
+newList.append("hamster");
