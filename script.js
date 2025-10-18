@@ -86,7 +86,14 @@ function createLinkedList() {
     }
   };
   //remove last node from the list
-  const pop = () => {};
+  const pop = () => {
+    let currentNode = head;
+    while (currentNode.next.next !== null) {
+      currentNode = currentNode.next;
+    }
+    currentNode.next = null;
+    tail = currentNode;
+  };
   //return true if if the passed value is in the list
   const contains = (value) => {};
   //return the index of the node containing value
@@ -94,7 +101,17 @@ function createLinkedList() {
   //show linked list objects as strings
   const toString = () => {};
 
-  return { append, prepend, getSize, getHead, getTail, at, insertAt, removeAt };
+  return {
+    append,
+    prepend,
+    getSize,
+    getHead,
+    getTail,
+    at,
+    insertAt,
+    removeAt,
+    pop,
+  };
 }
 
 function createNode() {
