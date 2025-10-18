@@ -1,7 +1,7 @@
 function createLinkedList() {
   //add a new node to the end
   const append = (value) => {
-    if (!head && !tail) {
+    if (!tail) {
       tail = createNode();
       tail.value = value;
       head = tail;
@@ -57,17 +57,34 @@ function createLinkedList() {
   };
   //insert a new node with provided value at given index
   const insertAt = (value, index) => {
-    let currentNode = head;
-    for (let i = 2; i < index; i++) {
-      currentNode = currentNode.next;
+    if (index === 1) {
+      let temp = head;
+      head = createNode();
+      head.value = value;
+      head.next = temp;
+    } else {
+      let currentNode = head;
+      for (let i = 2; i < index; i++) {
+        currentNode = currentNode.next;
+      }
+      let temp = currentNode.next;
+      currentNode.next = createNode();
+      currentNode.next.value = value;
+      currentNode.next.next = temp;
     }
-    let temp = currentNode.next;
-    currentNode.next = createNode();
-    currentNode.next.value = value;
-    currentNode.next.next = temp;
   };
   //remove a node at a given index
-  const removeAt = (index) => {};
+  const removeAt = (index) => {
+    if (index === 1) {
+      head.next = head;
+    } else {
+      let currentNode = head;
+      for (let i = 2; i < index; i++) {
+        currentNode = currentNode.next;
+      }
+      currentNode.next = currentNode.next.next;
+    }
+  };
   //remove last node from the list
   const pop = () => {};
   //return true if if the passed value is in the list
@@ -77,7 +94,7 @@ function createLinkedList() {
   //show linked list objects as strings
   const toString = () => {};
 
-  return { append, prepend, getSize, getHead, getTail, at, insertAt };
+  return { append, prepend, getSize, getHead, getTail, at, insertAt, removeAt };
 }
 
 function createNode() {
