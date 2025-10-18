@@ -26,7 +26,7 @@ function createLinkedList() {
     }
   };
   //return total number of nodes
-  const size = () => {
+  const getSize = () => {
     if (!head) return 0;
     let count = 1;
     let currentNode = head;
@@ -77,7 +77,7 @@ function createLinkedList() {
   //show linked list objects as strings
   const toString = () => {};
 
-  return { append, prepend, size, getHead, getTail, at, insertAt };
+  return { append, prepend, getSize, getHead, getTail, at, insertAt };
 }
 
 function createNode() {
