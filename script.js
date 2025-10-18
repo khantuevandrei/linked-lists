@@ -103,7 +103,15 @@ function createLinkedList() {
     return currentNode.value === value ? true : false;
   };
   //return the index of the node containing value
-  const find = (value) => {};
+  const find = (value) => {
+    let count = 1;
+    let currentNode = head;
+    while (currentNode.value !== value && currentNode.next !== null) {
+      currentNode = currentNode.next;
+      count++;
+    }
+    return currentNode.value === value ? count : "not found";
+  };
   //show linked list objects as strings
   const toString = () => {};
 
@@ -118,6 +126,7 @@ function createLinkedList() {
     removeAt,
     pop,
     contains,
+    find,
   };
 }
 
