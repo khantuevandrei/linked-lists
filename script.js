@@ -113,7 +113,16 @@ function createLinkedList() {
     return currentNode.value === value ? count : "not found";
   };
   //show linked list objects as strings
-  const toString = () => {};
+  const toString = () => {
+    let string = "";
+    let currentNode = head;
+    while (currentNode !== null) {
+      string += `( ${currentNode.value} ) -> `;
+      currentNode = currentNode.next;
+    }
+    string += "null";
+    return string;
+  };
 
   return {
     append,
@@ -127,6 +136,7 @@ function createLinkedList() {
     pop,
     contains,
     find,
+    toString,
   };
 }
 
@@ -136,9 +146,3 @@ function createNode() {
 
   return { value, next };
 }
-
-let newList = createLinkedList();
-newList.prepend("parrot");
-newList.append("cat");
-newList.append("dog");
-newList.append("hamster");
