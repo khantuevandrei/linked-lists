@@ -47,9 +47,25 @@ function createLinkedList() {
     return tail;
   };
   //return the node at a given index
-  const at = () => {};
+  const at = (index) => {
+    if (!head) return "List is empty";
+    let currentNode = head;
+    for (let i = 1; i < index; i++) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  };
   //insert a new node with provided value at given index
-  const insertAt = (value, index) => {};
+  const insertAt = (value, index) => {
+    let currentNode = head;
+    for (let i = 2; i < index; i++) {
+      currentNode = currentNode.next;
+    }
+    let temp = currentNode.next;
+    currentNode.next = createNode();
+    currentNode.next.value = value;
+    currentNode.next.next = temp;
+  };
   //remove a node at a given index
   const removeAt = (index) => {};
   //remove last node from the list
@@ -61,7 +77,7 @@ function createLinkedList() {
   //show linked list objects as strings
   const toString = () => {};
 
-  return { append, prepend, size, getHead, getTail };
+  return { append, prepend, size, getHead, getTail, at, insertAt };
 }
 
 function createNode() {
